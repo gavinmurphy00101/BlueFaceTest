@@ -1,0 +1,45 @@
+<div > 
+
+    <div *ngIf="user">
+        <h1>{{title}}</h1> 
+
+        <div><p>{{user.username}}​</p></div> 
+        
+        <div>
+            <label >First name</label>
+            <div [formGroup]="myGroup">
+                <input 
+                type="text" 
+                class="form-control"         
+                formControlName="firstName"
+                (click)="clearError()"
+                />
+             <br/>
+
+                <input 
+                type="text" 
+                class="form-control"         
+                formControlName="lastName"
+                (click)="clearError()"
+                />
+                <br/>
+
+                <input 
+                type="text" 
+                class="form-control"         
+                formControlName="email"
+                readonly
+                />
+              
+        </div>
+            <button (click)="saveProfile()" [disabled]="displaySaving">Save</button>       
+        </div> 
+    </div>
+    
+    <p *ngIf="displayLoading">​Loading profile...​</p> 
+
+    <p *ngIf="displaySaving">​Saving profile...​</p> 
+
+    <p *ngIf="displayError">​Error!​ {{errorMessage}}</p>
+
+</div>
